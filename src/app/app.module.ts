@@ -10,22 +10,22 @@ import { environment } from '../environments/environment';
 import { PoStorageModule } from '@po-ui/ng-storage';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PoModule,
     RouterModule.forRoot([]),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     PoStorageModule.forRoot({
       name: 'storageSegurosPO',
       storeName: '_StorageSegurosPO',
-      driverOrder: ['lokijs', 'websql', 'indexeddb', 'localstorage']
+      driverOrder: ['lokijs', 'websql', 'indexeddb', 'localstorage'],
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

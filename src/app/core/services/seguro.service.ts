@@ -12,6 +12,7 @@ import { OnlineOfflineService } from './online-offline.service';
 })
 export class SeguroService {
   private readonly API_SEGUROS = 'http://localhost:9000';
+  private todosSeguros;
 
   constructor(
     private http: HttpClient,
@@ -41,8 +42,8 @@ export class SeguroService {
 
     // tslint:disable-next-line: typedef
     private async enviarStorageParaApi() {
-      const todosSeguros = await  this.poStorageService.get('seguros');
-      for (const seguro of todosSeguros){
+      await this.poStorageService.get('seguros').then( seguros => { this.todosSeguros = seguros; });
+      for (const seguro of this.todosSeguros){
         this.salvarAPI(seguro);
         await this.poStorageService.removeItemFromArray('seguros', 'placaCarro', seguro.placaCarro);
       }
