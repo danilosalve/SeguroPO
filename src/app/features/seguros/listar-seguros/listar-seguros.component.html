@@ -1,0 +1,29 @@
+<po-page-default
+    p-title="Consultar de Seguros" >
+    <div class="content">
+      <div class="header">Seguros</div>
+    </div>
+    <div class="content">
+
+      <ng-container *ngIf="seguros$ | async as seguros; else carregando">
+        <ng-container *ngIf="seguros.length > 0; else semSeguros">
+          <po-widget *ngFor="let seguro of seguros" class="po-md-12 po-lg-4 po-mt-2" p-title="{{ seguro.nomeProprietario }}">
+            <div class="po-text-center"> <strong> Proprietário:  </strong>{{ seguro.nomeProprietario }} {{ seguro.sobrenomeProprietario }}</div>
+            <div class="po-text-center"> <strong> Marca e Modelo: </strong> {{ seguro.marcaCarro }} - {{ seguro.modeloCarro }}  </div>
+            <div class="po-text-center"> <strong> Placa: </strong> {{ seguro.placaCarro }}</div>
+          </po-widget>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #carregando>
+          <po-loading-overlay
+            [hidden]=!seguros$
+            p-text="Carregando dados..."
+          ></po-loading-overlay>
+      </ng-template>
+
+      <ng-template #semSeguros>
+        Não há seguros cadastrados.
+      </ng-template>
+    </div>
+</po-page-default>

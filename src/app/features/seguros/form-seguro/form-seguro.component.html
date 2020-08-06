@@ -1,0 +1,85 @@
+<po-page-default p-title="Cadastro de Seguros">
+  <form [formGroup]="formSeguro">
+    <po-divider p-label="Dados do Carro"> </po-divider>
+    <div class="po-row">
+      <po-input class="po-lg-4 po-pl-4" name="marcaCarro" p-required p-clean p-label="Marca">
+      </po-input>
+
+      <po-input
+        class="po-lg-4 po-pl-4"
+        id="modeloCarro"
+        formControlName="modeloCarro"
+        name="modeloCarro"
+        [(ngModel)]="seguro.modeloCarro"
+        p-required
+        p-clean
+        p-label="Modelo"
+        p-placeholder="Modelo"
+        p-minlength="2"
+      >
+      </po-input>
+
+      <po-input
+        class="po-lg-4 po-pl-4"
+        id="placaCarro"
+        formControlName="placaCarro"
+        name="placaCarro"
+        [(ngModel)]="seguro.placaCarro"
+        p-required
+        p-clean
+        p-label="Placa"
+        p-placeholder="Placa"
+        p-minlength="8"
+      >
+      </po-input>
+    </div>
+    <div class="po-row">
+      <po-input
+        class="po-lg-4 po-pl-4"
+        id="nomeProprietario"
+        formControlName="nomeProprietario"
+        name="nomeProprietario"
+        [(ngModel)]="seguro.nomeProprietario"
+        p-required
+        p-clean
+        p-label="Nome"
+        p-placeholder="Nome"
+        p-minlength="3"
+      >
+      </po-input>
+
+      <po-input
+        class="po-lg-4 po-pl-4"
+        id="sobrenomeProprietario"
+        formControlName="sobrenomeProprietario"
+        name="sobrenomeProprietario"
+        [(ngModel)]="seguro.sobrenomeProprietario"
+        p-label="Sobrenome"
+        p-placeholder="Sobrenome"
+        p-required
+        p-clean
+        p-minlength="2"
+      >
+      </po-input>
+
+      <po-datepicker
+        class="po-lg-4 po-pl-4"
+        id="dataNascimentoProprietario"
+        formControlName="dataNascimentoProprietario"
+        name="dataNascimentoProprietario"
+        [(ngModel)]="seguro.dataNascimentoProprietario"
+        p-label="Data de Nascimento"
+        p-placeholder="Data de Nascimento"
+      >
+      </po-datepicker>
+    </div>
+  </form>
+
+  <div class="po-row">
+    <po-button
+      class="po-md-1 po-mt-2"
+      p-label="Salvar"
+      (p-click)="salvar()"
+    ></po-button>
+  </div>
+</po-page-default>
